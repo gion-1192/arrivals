@@ -4,9 +4,9 @@ module Arrivals
   end
 
   class GetRakutenData
-    def get_search_data(keyword, **options)
-      searches = { keyword: keyword }.merge(options)
-      RakutenWebService::Ichiba::Item.search(searches)
+    def get_search_data(keyword = nil, **options)
+      options[:keyword] = keyword unless keyword.nil?
+      RakutenWebService::Ichiba::Item.search(options)
     end
   end
 end
